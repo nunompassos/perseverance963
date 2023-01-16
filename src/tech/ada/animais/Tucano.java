@@ -1,14 +1,21 @@
 package tech.ada.animais;
 
-public class Tucano implements Ave, Ave2, Cloneable, Comparable{
+public class Tucano implements Ave, Ave2, Cloneable, Comparable<Tucano> {
     private int idade;
+    private String nome;
 
-    public Tucano(int idade) {
+    public Tucano(int idade, String nome) {
         this.idade = idade;
+        this.nome = nome;
     }
 
     public Tucano cloneMe() throws CloneNotSupportedException {
         return (Tucano) this.clone();
+    }
+
+    @Override
+    public String getNome() {
+        return this.nome;
     }
 
     @Override
@@ -26,11 +33,7 @@ public class Tucano implements Ave, Ave2, Cloneable, Comparable{
     }
 
     @Override
-    public int compareTo(Object o) {
-        if (!(o instanceof Tucano)) {
-            return -99;
-        }
-        Tucano t = (Tucano) o;
+    public int compareTo(Tucano t) {
         return Integer.compare(getIdade(), t.getIdade());
     }
 

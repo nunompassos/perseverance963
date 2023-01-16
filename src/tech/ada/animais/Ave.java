@@ -4,6 +4,8 @@ public interface Ave {
 
     void colocaOvo();
 
+    String getNome();
+
     default void andar() {
         System.out.println("Estou a andar!");
         this.correr();
