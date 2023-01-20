@@ -1,6 +1,6 @@
 package tech.ada.animais;
 
-public class Tucano implements Ave, Ave2, Cloneable, Comparable<Tucano> {
+public class Tucano implements Ave, Cloneable, Comparable<Tucano> {
     private int idade;
     private String nome;
 

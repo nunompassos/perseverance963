@@ -1,16 +1,16 @@
 package tech.ada;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import tech.ada.animais.Ave;
 import tech.ada.animais.Tucano;
+import tech.ada.biblioteca.Editor;
+import tech.ada.biblioteca.Impressora;
+import tech.ada.biblioteca.Livro;
 
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException {
-
+/*
         final List<Ave> array = new ArrayList<>();
 
         final Tucano t = new Tucano(1, "Tomé");
@@ -23,15 +23,32 @@ public class Main {
 
         // Imprimir apenas se for Ave
         if(t2 instanceof Ave)
-            System.out.println(t2);
-
+            System.out.println(t2);*/
+/*
         t2.colocaOvo();
         colocarOvos(array);
         //colocarOvos(new Tucano(3, "António"));
         final Gaiola<Integer, Ave> g = new Gaiola<>();
         g.inserirAnimal(1, t);
         List<Gaiola> arrayGaiola = new ArrayList<>();
+        //g.getAnimal(1).cantar();
         //colocarOvos(arrayGaiola);
+        Map<String, List<Ave>> aveAgrupada = new EnumMap<>(); // new HashMap<>();
+        aveAgrupada.put(
+            "José",
+            List.of(new Tucano(12, "José"), new Tucano(2, "José"))
+            );
+*/
+
+        Livro l = new Livro("Aula de POO", 3, "Nuno", "ADA", "Pricipios de SOLID");
+        Editor<Livro> e = new Editor(l);
+        if (e.palavraExiste("SOLID")) {
+            System.out.println("A palavra 'SOLID' existe no texto!");
+        }
+        if (e.substituirPalavra("Pricipios", "Princípios")) {
+            Impressora.printToConsola(l.getTexto());
+        }
+
 
     }
 
