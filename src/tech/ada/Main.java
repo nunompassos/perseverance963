@@ -3,14 +3,21 @@ package tech.ada;
 import java.util.*;
 
 import tech.ada.animais.Ave;
+import tech.ada.animais.AveVoadora;
+import tech.ada.animais.Pinguim;
 import tech.ada.animais.Tucano;
 import tech.ada.biblioteca.Editor;
 import tech.ada.biblioteca.Impressora;
 import tech.ada.biblioteca.Livro;
+import tech.ada.logger.MyLog;
+import tech.ada.logger.MyLogImpl;
 
 public class Main {
+    @Inject
+    private MyLog logger;
     public static void main(String[] args) throws CloneNotSupportedException {
-/*
+        //MyLog logger = new MyLogImpl();
+
         final List<Ave> array = new ArrayList<>();
 
         final Tucano t = new Tucano(1, "Tomé");
@@ -21,10 +28,16 @@ public class Main {
             ((Tucano) tucano).colocaOvo();
         }
 
+        final Ave ave = new Pinguim();
+
+        ave.colocaOvo();
+        ave.andar();
+        logger.logInfo(ave.andar());
+
         // Imprimir apenas se for Ave
         if(t2 instanceof Ave)
-            System.out.println(t2);*/
-/*
+            System.out.println(t2);
+
         t2.colocaOvo();
         colocarOvos(array);
         //colocarOvos(new Tucano(3, "António"));
@@ -38,8 +51,10 @@ public class Main {
             "José",
             List.of(new Tucano(12, "José"), new Tucano(2, "José"))
             );
-*/
 
+        array.stream().filter(it -> it instanceof AveVoadora);
+
+/*
         Livro l = new Livro("Aula de POO", 3, "Nuno", "ADA", "Pricipios de SOLID");
         Editor<Livro> e = new Editor(l);
         if (e.palavraExiste("SOLID")) {
@@ -47,7 +62,7 @@ public class Main {
         }
         if (e.substituirPalavra("Pricipios", "Princípios")) {
             Impressora.printToConsola(l.getTexto());
-        }
+        }*/
 
 
     }

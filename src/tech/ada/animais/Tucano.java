@@ -1,6 +1,6 @@
 package tech.ada.animais;
 
-public class Tucano implements Ave, Cloneable, Comparable<Tucano> {
+public class Tucano implements Ave, AveVoadora, Cloneable, Comparable<Tucano> {
     private int idade;
     private String nome;
 
@@ -16,6 +16,11 @@ public class Tucano implements Ave, Cloneable, Comparable<Tucano> {
     @Override
     public String getNome() {
         return this.nome;
+    }
+
+    @Override
+    public String voar() {
+        return "Tucano a voar";
     }
 
     @Override
@@ -43,7 +48,12 @@ public class Tucano implements Ave, Cloneable, Comparable<Tucano> {
     }
 
     @Override
-    public void andar() {
-        Ave.super.andar();
+    public String andar() {
+        return "Tucano a andar";
+    }
+
+    @Override
+    public String pular() {
+        return "Tucano a pular";
     }
 }

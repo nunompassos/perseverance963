@@ -5,11 +5,9 @@ public interface Ave {
     void colocaOvo();
 
     String getNome();
-
-    default void andar() {
-        System.out.println("Estou a andar!");
-        this.correr();
-    }
+     // String voa();
+     String andar();
+     String pular();
 
     private void correr() {
         System.out.println("Estou a correr!");
