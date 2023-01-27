@@ -1,6 +1,9 @@
 package tech.ada.animais;
 
 public class Pinguim implements Ave{
+
+    private Asa asa;
+
     @Override
     public void colocaOvo() {
         System.out.println("Pinguim a colocar ovo");

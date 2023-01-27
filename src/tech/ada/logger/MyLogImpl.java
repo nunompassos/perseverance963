@@ -1,10 +1,10 @@
 package tech.ada.logger;
 
-@Service
+
 public class MyLogImpl implements MyLog {
     @Override
     public void logInfo(String msg) {
-        log4j.INFO(msg);
+
     }
 
     @Override

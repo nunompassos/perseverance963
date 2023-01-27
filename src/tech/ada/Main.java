@@ -6,14 +6,10 @@ import tech.ada.animais.Ave;
 import tech.ada.animais.AveVoadora;
 import tech.ada.animais.Pinguim;
 import tech.ada.animais.Tucano;
-import tech.ada.biblioteca.Editor;
-import tech.ada.biblioteca.Impressora;
-import tech.ada.biblioteca.Livro;
 import tech.ada.logger.MyLog;
-import tech.ada.logger.MyLogImpl;
 
 public class Main {
-    @Inject
+
     private MyLog logger;
     public static void main(String[] args) throws CloneNotSupportedException {
         //MyLog logger = new MyLogImpl();
@@ -32,7 +28,7 @@ public class Main {
 
         ave.colocaOvo();
         ave.andar();
-        logger.logInfo(ave.andar());
+        //logger.logInfo(ave.andar());
 
         // Imprimir apenas se for Ave
         if(t2 instanceof Ave)
@@ -46,12 +42,12 @@ public class Main {
         List<Gaiola> arrayGaiola = new ArrayList<>();
         //g.getAnimal(1).cantar();
         //colocarOvos(arrayGaiola);
-        Map<String, List<Ave>> aveAgrupada = new EnumMap<>(); // new HashMap<>();
-        aveAgrupada.put(
+        //Map<String, List<Ave>> aveAgrupada = new EnumMap<>(); // new HashMap<>();
+        /*aveAgrupada.put(
             "José",
             List.of(new Tucano(12, "José"), new Tucano(2, "José"))
             );
-
+*/
         array.stream().filter(it -> it instanceof AveVoadora);
 
 /*
