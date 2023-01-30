@@ -5,19 +5,20 @@ import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ContaPoupanca extends Conta {
+public class ContaPoupanca extends Conta implements ContaSacavel, ContaDepositavel {
 
     private Map<Integer, BigDecimal> saldoDia = new HashMap();
     @Override
     public BigDecimal sacar(BigDecimal saque) {
         removerSaldo(saque);
+        removerSaldoDia(saque);
         return getSaldo();
     }
 
     @Override
     public BigDecimal depositar(BigDecimal deposito) {
         adicionarSaldo(deposito);
-        atualizarSaldoDia(deposito);
+        adicionarSaldoDia(deposito);
         return getSaldo();
     }
 
@@ -33,14 +34,31 @@ public class ContaPoupanca extends Conta {
         return "Saldo: " + getSaldo();
     }
 
-    private void atualizarSaldoDia(BigDecimal montante) {
+    private void adicionarSaldoDia(BigDecimal montante) {
         final int dia = ZonedDateTime.now().getDayOfMonth();
-        atualizarSaldoDia(montante, dia > 28 ? 28 : dia);
+        adicionarSaldoDia(montante, dia > 28 ? 28 : dia);
     }
 
-    private void atualizarSaldoDia(BigDecimal montante, int dia) {
+    private void adicionarSaldoDia(BigDecimal montante, int dia) {
         final BigDecimal saldo = saldoDia.get(dia);
         saldoDia.put(dia, saldo != null ? saldo.add(montante): montante);
+    }
+
+    private void removerSaldoDia(BigDecimal montante) {
+        final int dia = ZonedDateTime.now().getDayOfMonth();
+        removerSaldoDia(montante, dia > 28 ? 28 : dia);
+    }
+
+    private void removerSaldoDia(BigDecimal montante, int dia) {
+        BigDecimal saldo = saldoDia.get(dia);
+        if (saldo != null) {
+            saldoDia.put(dia, saldo.compareTo(montante) >= 0 ? saldo.subtract(montante) : saldo);
+        } else {
+            saldo = BigDecimal.ZERO;
+        }
+        if (saldo.compareTo(montante) < 0) {
+            removerSaldoDia(montante.subtract(saldo), dia == 1 ? 28 : dia - 1);
+        }
     }
 
     public BigDecimal calcularJuro() {

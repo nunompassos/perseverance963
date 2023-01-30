@@ -2,7 +2,7 @@ package tech.ada.livecoding.contas;
 
 import java.math.BigDecimal;
 
-public class ContaCorrente extends Conta {
+public class ContaCorrente extends Conta implements ContaSacavel, ContaDepositavel {
     @Override
     public BigDecimal sacar(BigDecimal saque) {
         removerSaldo(saque);

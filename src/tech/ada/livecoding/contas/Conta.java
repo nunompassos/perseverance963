@@ -33,7 +33,5 @@ public abstract class Conta {
         }
     }
 
-    public abstract BigDecimal sacar(BigDecimal saque);
-    public abstract BigDecimal depositar(BigDecimal deposito);
     public abstract BigDecimal transferir(BigDecimal montante, Conta destino);
 }
